@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+x =np.linspace(-10,10,100)
+y =sigmoid(x)
+plt.figure()
+plt.plot(x,y)
+plt.title("sigmoid Function")
+plt.xlabel("input")plt.ylabel("sigmoid output")
+plt.grid(True)
+plt.show()
+X =np.array([[1],[2],[3],[4],[5],[6]])
+Y =np.array([0,0,0,1,1,1])
+model = LogisticRegression()
+model.fit(X,Y)
+test =np.array([2.5],[3.5],[5.5])
+pred = model.predict(test)
+print("Test Values:",test.flatten())
+print("Prediction:",pred)
+X_plot = np.linspace(0,7,100).reshape(-1,1)
+yield_plot = model.predict_proba(X_plot)[:,1]
+plt.figure()
+plt.scatter(X,y)
+plt.plot(X_plot,y_plot)
+plt.title("Logistic Regression Curve")
+plt.xlabel("X")
+plt.ylabel("Probability")
+plt.show()
